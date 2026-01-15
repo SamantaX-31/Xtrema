@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Xtrema | Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="nav-brand">
+            <img src="assets/xtrema-logo.png" onerror="this.style.display='none'" class="nav-logo-img">
+            <span>Xtrema</span>
+        </div>
+        <div class="nav-links">
+            <a href="upload.html">Home</a>
+            <a href="profile.html" style="color: var(--primary-green);">Profile</a>
+            <a href="points.html">Points</a>
+            <a href="#">Learn more</a>
+        </div>
+    </nav>
+
+    <div class="profile-container">
+        <div class="avatar-circle">
+            <i class="fas fa-user"></i>
+        </div>
+
+        <h2 style="color: var(--primary-green); margin-bottom: 20px;">Profile Details</h2>
+
+        <div style="text-align: left; margin-bottom: 20px;">
+            <p class="profile-detail"><strong>Name</strong></p>
+            <p class="profile-name" id="profile-name">User</p>
+
+            <p class="profile-detail" style="margin-top: 15px;"><strong>Email id:</strong></p>
+            <p style="font-weight: 500;" id="profile-email">example@gmail.com</p>
+        </div>
+
+        <div class="stat-box">
+            <p class="stat-label">Waste Contribution</p>
+            <p class="stat-value" id="profile-waste">50 kgs</p>
+
+            <p class="stat-label">Points</p>
+            <p class="stat-value" style="color: orange;" id="profile-points">1000</p>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

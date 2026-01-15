@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Xtrema | Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="login-container">
+        <div class="logo-section">
+            <img src="assets/xtrema-logo.png" alt="Xtrema Logo" class="xtrema-logo">
+        </div>
+
+        <div class="input-group">
+            <input type="email" id="email" placeholder="Email Address">
+            <input type="password" id="password" placeholder="Password">
+        </div>
+
+        <button class="btn-green" onclick="loginUser()">Log in</button>
+
+        <div class="or-divider">or</div>
+
+        <button class="social-btn">
+            <i class="fab fa-google"></i> Sign in with Google
+        </button>
+
+        <button class="social-btn">
+            <i class="fab fa-facebook"></i> Sign in with Facebook
+        </button>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Override loginUser to use working logic
+        const originalLoginUser = window.loginUser;
+        window.loginUser = function() {
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            if (!email || !password) {
+                alert("Please enter email and password");
+                return;
+            }
+
+            const API_URL = "http://127.0.0.1:8000/api";
+
+            fetch(API_URL + "/login/", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        password: password
+                    })
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.status === "success") {
+                        localStorage.setItem("user_id", data.user_id);
+                        localStorage.setItem("user_email", data.email);
+                        alert(data.message);
+                        window.location.href = "upload.html";
+                    } else {
+                        alert("Login failed: " + data.message);
+                    }
+                })
+                .catch(err => {
+                    console.error("Login error:", err);
+                    alert("Login error: " + err);
+                });
+        };
+    </script>
+</body>
+
+</html>

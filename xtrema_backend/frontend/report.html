@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Xtrema | Report</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="nav-brand">
+            <img src="assets/xtrema-logo.png" onerror="this.style.display='none'" class="nav-logo-img" alt="Xtrema">
+            <span>Xtrema</span>
+        </div>
+        <div class="nav-links">
+            <a href="upload.html">Home</a>
+            <a href="profile.html">Profile</a>
+            <a href="points.html">Points</a>
+            <a href="#">Learn more</a>
+        </div>
+        <div class="nav-profile-circle" onclick="goTo('profile.html')">
+            <i class="fas fa-user"></i>
+        </div>
+    </nav>
+
+    <div class="report-wrapper">
+        <div class="report-left">
+            <div class="main-image-display" id="mainImageDisplay">
+                <img id="mainImage" src="" alt="Uploaded image" style="display: none;">
+                <span id="noImageText">No image selected</span>
+            </div>
+
+            <button class="btn-green btn-pickup" onclick="goTo('pickup.html')">
+                <i class="fas fa-truck" style="margin-right: 10px;"></i>Pick up
+            </button>
+        </div>
+
+        <div class="report-right">
+            <div class="bar-item">
+                <div class="bar-label">
+                    <span>Plastic</span>
+                    <span id="plastic-percent">50%</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill fill-plastic" id="plastic-bar" style="width: 50%"></div>
+                </div>
+            </div>
+
+            <div class="bar-item">
+                <div class="bar-label">
+                    <span>Glass</span>
+                    <span id="glass-percent">10%</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill fill-glass" id="glass-bar" style="width: 10%"></div>
+                </div>
+            </div>
+
+            <div class="bar-item">
+                <div class="bar-label">
+                    <span>Cardboard</span>
+                    <span id="cardboard-percent">25%</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill fill-cardboard" id="cardboard-bar" style="width: 25%"></div>
+                </div>
+            </div>
+
+            <div class="bar-item">
+                <div class="bar-label">
+                    <span>Metal</span>
+                    <span id="metal-percent">75%</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill fill-metal" id="metal-bar" style="width: 75%"></div>
+                </div>
+            </div>
+
+            <div class="bar-item">
+                <div class="bar-label">
+                    <span>Trash</span>
+                    <span id="trash-percent">15%</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill fill-trash" id="trash-bar" style="width: 15%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

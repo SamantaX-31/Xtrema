@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Xtrema | Pickup</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="nav-brand">
+            <img src="assets/xtrema-logo.png" onerror="this.style.display='none'" class="nav-logo-img" alt="Xtrema">
+            <span>Xtrema</span>
+        </div>
+        <div class="nav-links">
+            <a href="upload.html">Home</a>
+            <a href="profile.html">Profile</a>
+            <a href="points.html">Points</a>
+            <a href="#">Learn more</a>
+        </div>
+        <div class="nav-profile-circle" onclick="goTo('profile.html')">
+            <i class="fas fa-user"></i>
+        </div>
+    </nav>
+
+    <div class="pickup-wrapper">
+        <h2 class="pickup-title">Pickup Details</h2>
+
+        <div class="pickup-form-grid">
+            <input class="form-input" id="address" placeholder="Address" required>
+            <input class="form-input" id="pincode" placeholder="Pincode" required>
+
+            <input class="form-input" id="state" placeholder="State" required>
+            <input class="form-input" id="landmark" placeholder="Landmark" required>
+
+            <input class="form-input" type="date" id="date" required>
+            <input class="form-input" id="garbageType" placeholder="Garbage type" required>
+        </div>
+
+        <button class="btn-green btn-scheduled" id="scheduleBtn">Scheduled Pick up</button>
+    </div>
+
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()" style="float:right; cursor:pointer;">&times;</span>
+            <h2 style="color: var(--primary-green);">Success!</h2>
+            <p>Pick Up Scheduled Successfully</p>
+            <button class="btn-green" onclick="window.location.href='profile.html'">OK</button>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

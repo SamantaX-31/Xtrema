@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Xtrema | Upload</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="nav-brand">
+            <img src="assets/xtrema-logo.png" onerror="this.style.display='none'" class="nav-logo-img" alt="Xtrema">
+            <span>Xtrema</span>
+        </div>
+        <div class="nav-links">
+            <a href="upload.html">Home</a>
+            <a href="profile.html">Profile</a>
+            <a href="points.html">Points</a>
+            <a href="#">Learn more</a>
+        </div>
+        <div class="nav-profile-circle" onclick="goTo('profile.html')">
+            <i class="fas fa-user"></i>
+        </div>
+    </nav>
+
+    <div class="upload-wrapper">
+        <div class="upload-cards-container">
+            <div class="upload-card" onclick="document.getElementById('fileIn').click()">
+                <i class="fas fa-folder folder-icon"></i>
+                <p>Choose images from your files,<br>or drag and drop here</p>
+                <input type="file" id="fileIn" multiple style="display:none" onchange="handleFileUpload(this.files)">
+            </div>
+
+            <div class="upload-card google-drive-card">
+                <i class="fab fa-google-drive google-drive-icon"></i>
+                <p>Import images from google drive</p>
+            </div>
+        </div>
+
+        <button class="btn-green btn-generate" onclick="generateReport()">Generate Report</button>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Override generateReport with direct navigation and better debugging
+        const originalGenerateReport = window.generateReport;
+        window.generateReport = function() {
+            console.log("Generate Report clicked");
+            const imageData = localStorage.getItem("uploadedImages");
+            console.log("uploadedImages from localStorage:", imageData ? imageData.substring(0, 100) + "..." : "null");
+
+            if (!imageData) {
+                console.log("No uploadedImages found in localStorage");
+                alert("Please upload at least one image");
+                return;
+            }
+
+            try {
+                const images = JSON.parse(imageData);
+                console.log("Parsed images. Length:", images.length);
+
+                if (images.length === 0) {
+                    console.log("Images array is empty");
+                    alert("Please upload at least one image");
+                    return;
+                }
+            } catch (e) {
+                console.error("Error parsing uploadedImages:", e);
+                alert("Error processing images. Please try uploading again.");
+                return;
+            }
+
+            // Static AI output
+            localStorage.setItem("report", JSON.stringify({
+                plastic: 50,
+                glass: 10,
+                cardboard: 25,
+                metal: 75,
+                trash: 15
+            }));
+
+            console.log("Report data saved. Redirecting to report.html");
+            window.location.href = "report.html";
+        };
+    </script>
+</body>
+
+</html>
